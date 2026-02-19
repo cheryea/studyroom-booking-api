@@ -59,23 +59,6 @@ POST /users/login
 
 
 ## StudyRoom API
-### 스터디룸 목록
-```bash
-GET /studyrooms?page=1&size=10
-```
-#### Response (200 OK)
-```json
-[
-  {
-    "id": 1,
-    "name": "스터디룸 A",
-    "floor": 4,
-    "capacity": 4,
-    "location": "중앙도서관",
-    "facilities": ["화이트보드"]
-  }
-]
-```
 ### 스티디룸 목록 + 쿼리 파라미터
 ```bash
 GET /studyrooms?floor=4&min_capacity=4
