@@ -17,7 +17,9 @@ erDiagram
         int floor
         int capacity
         string location
+        string[] facilities
     }
+
 
     RESERVATION {
         int id PK
