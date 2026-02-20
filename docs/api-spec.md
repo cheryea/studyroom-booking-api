@@ -8,9 +8,9 @@ POST /users
 #### Request
 ```json
 {
-  "student_number": "20240001",
-  "password": "1234",
-  "name": "홍길동"
+  "student_number": "201602042",  // max 20자
+  "password": "1234",             // min 4자
+  "name": "홍길동"                 // max 50자
 }
 ```
 #### Response (201 Created)

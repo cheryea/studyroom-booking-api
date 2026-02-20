@@ -18,8 +18,9 @@ class User(Base):
     )
 
     student_number: Mapped[str] = mapped_column(
-        String(120),           # 최대 120자
+        String(20),           # 최대 20자
         unique=True,           # 중복 불가
+        index=True,          # 인덱스 생성
         nullable=False         # 값 필수(null 불가)
     )
 
