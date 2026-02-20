@@ -61,6 +61,19 @@ POST /auth/login
 }
 ```
 
+## Facility API
+### 시설 목록 조회
+```bash
+GET /studyrooms/{studyroom_id}/facilities
+```
+#### Response (200 OK)
+```json
+[
+  {"id": 1, "name": "화이트보드"},
+  {"id": 2, "name": "빔프로젝터"}
+]
+```
+
 
 ## StudyRoom API
 ### 스티디룸 목록 + 쿼리 파라미터
@@ -76,7 +89,10 @@ GET /studyrooms?floor=4&min_capacity=4
     "floor": 4,
     "location": "중앙도서관",
     "capacity": 4,
-    "facilities": ["화이트보드"]
+    "facilities": [
+        {"id": 1, "name": "화이트보드"},
+        {"id": 2, "name": "빔프로젝터"}
+    ]
   }
 ]
 ```

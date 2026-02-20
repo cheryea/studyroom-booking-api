@@ -3,6 +3,7 @@ erDiagram
     USER ||--o{ RESERVATION : makes
     STUDYROOM ||--o{ RESERVATION : booked_for
     RESERVATION ||--|| REVIEW : has
+    STUDYROOM ||--o{ FACILITY : has
 
     USER {
         int id PK
@@ -17,9 +18,13 @@ erDiagram
         int floor
         int capacity
         string location
-        string[] facilities
     }
 
+    FACILITY {
+        int id PK
+        int studyroom_id FK
+        string name
+    }
 
     RESERVATION {
         int id PK
@@ -39,4 +44,3 @@ erDiagram
         datetime created_at
     }
 ```
-![ERD Diagram](./studyroom-booking-api.drawio.png)
