@@ -21,21 +21,30 @@ POST /users
   "name": "홍길동"
 }
 ```
-### 회원 조회
+### 회원 가입
 ```bash
-GET /users/{user_id}
+GET /auth/signup
+```
+#### Request
+```json
+{
+  "student_number": "20240001",
+  "password": "1234",
+  "name": "홍길동"
+}
 ```
 #### Response (200 OK)
 ```json
 {
-  "id": 1,
-  "student_number": "20240001",
-  "name": "홍길동"
+    "id": 1,
+    "student_number": "20240001",
+    "name": "홍길동"
 }
 ```
+
 ### 로그인
 ```bash
-POST /users/login
+POST /auth/login
 ```
 #### Request
 ```json
@@ -49,11 +58,6 @@ POST /users/login
 {
   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6...",
   "token_type": "bearer",
-  "user": {
-    "id": 1,
-    "student_number": "20240001",
-    "name": "홍길동"
-  }
 }
 ```
 
@@ -183,7 +187,7 @@ PATCH /reservations/{reservation_id}/cancel
 
 ### 리뷰 작성
 ```bash
-POST /reviews
+POST /reservations/{id}/reviews
 ```
 #### Request
 ```json
