@@ -2,11 +2,14 @@
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Integer, String
+from sqlalchemy.ext.associationproxy import association_proxy, AssociationProxy
 from database import Base
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .reservation import Reservation
+    from .studyroom_facility import StudyRoomFacility
+    from .facility import Facility
 
 class StudyRoom(Base):
     __tablename__ = "studyrooms"  # 테이블 이름
@@ -38,4 +41,14 @@ class StudyRoom(Base):
 
     reservations: Mapped[list["Reservation"]] = relationship(
         "Reservation", back_populates="studyroom"
+    )
+
+    # Facility 자체는 삭제되지 않고, 연결만 끊김
+    studyroom_facilities: Mapped[list["StudyRoomFacility"]] = relationship(
+        back_populates="studyroom", cascade="all, delete-orphan", passive_deletes=True
+    )
+
+    # studyroom.facilities로 바로 접근이 가능해집니다.
+    facilities: AssociationProxy[list["Facility"]] = association_proxy(
+        "studyroom_facilities", "facility", creator=lambda _facility: StudyRoomFacility(facility=_facility)
     )

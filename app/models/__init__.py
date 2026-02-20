@@ -5,5 +5,7 @@ from .reservation import Reservation
 from .user import User
 from .studyroom import StudyRoom
 from .review import Review
+from .facility import Facility
+from .studyroom_facility import StudyRoomFacility
 
-__all__ = ["Base", "Reservation", "User", "StudyRoom", "Review"]
+__all__ = ["Base", "Reservation", "User", "StudyRoom", "Review", "Facility", "StudyRoomFacility"]

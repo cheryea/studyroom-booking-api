@@ -1,13 +1,13 @@
 # app/schemas.py
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 # StudyRoom
 class StudyRoomResponse(BaseModel):
     id: int
     name: str
     floor: int
-    capacity: int
     location: str
+    capacity: int
+    facilities: list[str] = []
 
-    # class Config:
-    #     orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
