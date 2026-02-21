@@ -1,5 +1,6 @@
 # app/schemas.py
 from pydantic import BaseModel, ConfigDict
+from app.schemas.facility import FacilityResponse
 
 # StudyRoom
 class StudyRoomResponse(BaseModel):
@@ -8,6 +9,6 @@ class StudyRoomResponse(BaseModel):
     floor: int
     location: str
     capacity: int
-    facilities: list[str] = []
+    facilities: list[FacilityResponse] = []
 
     model_config = ConfigDict(from_attributes=True)

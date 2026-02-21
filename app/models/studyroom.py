@@ -43,7 +43,6 @@ class StudyRoom(Base):
         "Reservation", back_populates="studyroom"
     )
 
-    # Facility 자체는 삭제되지 않고, 연결만 끊김
     studyroom_facilities: Mapped[list["StudyRoomFacility"]] = relationship(
         back_populates="studyroom", cascade="all, delete-orphan", passive_deletes=True
     )

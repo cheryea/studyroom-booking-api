@@ -20,8 +20,9 @@ class StudyRoomService:
     #     db.refresh(new_tag)
     #     return new_tag
 
-    def read_studyroom(self, db: Session):
-        return studyroom_repository.find_all(db)
+    def read_studyrooms(self, db: Session, floor: int = None, min_capacity: int = None):
+        return studyroom_repository.search(db, floor, min_capacity)
+
 
 
 studyroom_service = StudyRoomService()
