@@ -109,10 +109,6 @@ GET /studyrooms?floor=4&min_capacity=4
 ```json
 {"detail": "Not authenticated"}
 ```
-- 409 Conflict
-```json
-{ "detail": "Reservation already exists" }
-```
 ### 예약하기
 ```bash
 POST /reservations

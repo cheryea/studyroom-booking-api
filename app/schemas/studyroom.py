@@ -12,3 +12,9 @@ class StudyRoomResponse(BaseModel):
     facilities: list[FacilityResponse] = []
 
     model_config = ConfigDict(from_attributes=True)
+
+class StudyRoomSimpleResponse(BaseModel):
+    name: str
+    floor: int
+
+    model_config = ConfigDict(from_attributes=True)

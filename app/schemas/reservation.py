@@ -1,7 +1,8 @@
 # app/schemas.py
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 from enum import Enum
+from app.schemas.studyroom import StudyRoomSimpleResponse
 
 
 # Reservation
@@ -18,11 +19,10 @@ class ReservationCreate(BaseModel):
 class ReservationResponse(BaseModel):
     id: int
     user_id: int
-    studyroom_id: int
+    studyroom: StudyRoomSimpleResponse
     start_datetime: datetime
     end_datetime: datetime
     status: ReservationStatus
     created_at: datetime
 
-    # class Config:
-    #     orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
