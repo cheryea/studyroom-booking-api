@@ -124,12 +124,16 @@ POST /reservations
 #### Response (201 Created)
 ```json
 {
-  "id": 1,
-  "studyroom_id": 1,
-  "start_datetime": "2026-02-20T09:00:00",
-  "end_datetime": "2026-02-20T10:00:00",
-  "status": "RESERVED",
-  "created_at": "2026-02-19T12:00:00"
+    "id": 2,
+    "user_id": 2,
+    "studyroom": {
+        "name": "스터디룸 B",
+        "floor": 4
+    },
+    "start_datetime": "2026-02-21T16:00:00",
+    "end_datetime": "2026-02-21T17:00:00",
+    "status": "RESERVED",
+    "created_at": "2026-02-23T09:34:14.585875"
 }
 ```
 ### 내 예약 목록
@@ -142,23 +146,27 @@ GET /reservations/mine
 [
   {
     "id": 1,
-    "studyroom_id": 1,
-    "studyroom_name": "스터디룸 A",
-    "floor": 4,
-    "location": "중앙도서관",
+    "user_id": 1,
+    "studyroom": {
+      "name": "스터디룸 A",
+      "floor": 4
+    },
     "start_datetime": "2026-02-20T09:00:00",
     "end_datetime": "2026-02-20T10:00:00",
-    "status": "RESERVED"
+    "status": "RESERVED",
+    "created_at": "2026-02-23T09:34:14.585875"
   },
   {
     "id": 2,
-    "studyroom_id": 2,
-    "studyroom_name": "스터디룸 B",
-    "floor": 3,
-    "location": "중앙도서관",
+    "user_id": 2,
+    "studyroom": {
+      "name": "스터디룸 B",
+      "floor": 3
+    },
     "start_datetime": "2026-02-18T14:00:00",
     "end_datetime": "2026-02-18T15:00:00",
-    "status": "COMPLETED"
+    "status": "COMPLETED",
+    "created_at": "2026-02-23T09:34:14.585875"
   }
 ]
 ```
@@ -169,12 +177,16 @@ PATCH /reservations/{reservation_id}/cancel
 #### Response (200 OK)
 ```json
 {
-  "id": 1,
-  "studyroom_id": 1,
-  "start_datetime": "2026-02-20T09:00:00",
-  "end_datetime": "2026-02-20T11:00:00",
-  "status": "CANCELED",
-  "created_at": "2026-02-19T12:00:00"
+    "id": 2,
+    "user_id": 2,
+    "studyroom": {
+        "name": "스터디룸 B",
+        "floor": 4
+    },
+    "start_datetime": "2026-02-21T16:00:00",
+    "end_datetime": "2026-02-21T17:00:00",
+    "status": "CANCELED",
+    "created_at": "2026-02-23T09:34:14.585875"
 }
 ```
 #### Error Responses
