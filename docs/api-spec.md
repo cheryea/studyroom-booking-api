@@ -41,6 +41,11 @@ GET /auth/signup
     "name": "홍길동"
 }
 ```
+#### Error Responses
+- 409_CONFLICT
+```json
+{"detail": "이미 등록된 이메일입니다."}
+```
 
 ### 로그인
 ```bash
@@ -59,6 +64,11 @@ POST /auth/login
   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6...",
   "token_type": "bearer",
 }
+```
+#### Error Responses
+- 401_UNAUTHORIZED
+```json
+{"detail": "이메일 또는 비밀번호가 올바르지 않습니다."}
 ```
 
 ## Facility API
@@ -105,7 +115,7 @@ GET /studyrooms?floor=4&min_capacity=4
 - Content-Type: application/json
 
 #### Error Responses
-- 401 Unauthorized
+- 401_Unauthorized
 ```json
 {"detail": "Not authenticated"}
 ```
@@ -136,6 +146,17 @@ POST /reservations
     "created_at": "2026-02-23T09:34:14.585875"
 }
 ```
+#### Error Responses
+- 400_BAD_REQUEST
+```json
+{"detail": "종료시간은 시작시간보다 이후여야 합니다."},
+{"detail":"이미 해당 시간에 예약이 존재합니다."}
+```
+- 404_NOT_FOUND
+```json
+{"detail": "해당 스터디룸이 존재하지 않습니다."}
+```
+
 ### 내 예약 목록
 ```bash
 GET /reservations/mine
@@ -170,6 +191,11 @@ GET /reservations/mine
   }
 ]
 ```
+#### Error Responses
+- 404_NOT_FOUND
+```json
+{"detail": "예약을 찾을 수 없습니다."}
+```
 ### 내 예약 취소
 ```bash
 PATCH /reservations/{reservation_id}/cancel
@@ -190,9 +216,17 @@ PATCH /reservations/{reservation_id}/cancel
 }
 ```
 #### Error Responses
-- 403 Forbidden
+- 404_NOT_FOUND
 ```json
-{"detail": "Cannot cancel a completed or canceled reservation"}
+{"detail": "예약을 찾을 수 없습니다."}
+```
+- 403_Forbidden
+```json
+{"detail": "본인의 예약만 취소할 수 있습니다."}
+```
+- 409_CONFLICT
+```json
+{"detail": "이미 취소된 예약입니다."}
 ```
 
 ## Review API

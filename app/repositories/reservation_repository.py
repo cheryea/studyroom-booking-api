@@ -19,7 +19,15 @@ class Reservation_Repository:
             .where(Reservation.user_id == user_id)
             .order_by(Reservation.start_datetime.desc())  # 최신순
         ).all()
+    
 
+    def find_by_id(self, db: Session, reservation_id: int) -> Reservation | None:
+        return db.get(Reservation, reservation_id)
+
+
+    def cancel(self, db: Session, reservation: Reservation) -> Reservation:
+        reservation.status = reservation.status.CANCELED
+        return reservation
 
 
 reservation_repository = Reservation_Repository()

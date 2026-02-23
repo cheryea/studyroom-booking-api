@@ -74,4 +74,36 @@ class ReservationService:
         return reservations
     
 
+    def cancel_reservation(self, db: Session, reservation_id: int, current_user: User):
+        # 1️⃣ 예약 조회
+        print("reservation_id:", reservation_id)
+        reservation = reservation_repository.find_by_id(db, reservation_id)
+        print("reservation:", reservation)
+        if not reservation:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="예약을 찾을 수 없습니다."
+            )
+
+        # 2️⃣ 권한 체크: 본인 예약만 취소 가능
+        if reservation.user_id != current_user.id:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="본인의 예약만 취소할 수 있습니다."
+            )
+
+        # 3️⃣ 이미 취소된 예약인지 확인
+        if reservation.status == ReservationStatus.CANCELED:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="이미 취소된 예약입니다."
+            )
+
+        reservation_repository.cancel(db, reservation)
+
+        db.commit()
+        db.refresh(reservation)
+
+        return reservation
+
 reservation_service = ReservationService()

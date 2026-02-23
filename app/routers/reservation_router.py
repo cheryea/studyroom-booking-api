@@ -29,3 +29,14 @@ def get_my_reservations(
 ):
     return reservation_service.get_my_reservations(db, current_user)
 
+
+@router.patch(
+    "/{reservation_id}/cancel",
+    response_model=ReservationResponse,
+)
+def cancel_reservation(
+    reservation_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return reservation_service.cancel_reservation(db, reservation_id, current_user)
