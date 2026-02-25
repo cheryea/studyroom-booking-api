@@ -75,7 +75,7 @@ uvicorn main:app --reload
 
 ## API 문서
 
-- **상세 명세**: [docs/api-spec.md](app/api-spec.md)  
+- **상세 명세**: [docs/api-spec.md](docs/api-spec.md)  
 - 실행 중인 서버의 대화형 문서: `/docs`, `/redoc`
 
 ## 프로젝트 구조
