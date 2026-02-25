@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     USER ||--o{ RESERVATION : makes
     STUDYROOM ||--o{ RESERVATION : booked_for
@@ -8,8 +9,8 @@ erDiagram
     USER {
         int id PK
         string student_number
-        string password_hash
         string name
+        string password
     }
 
     STUDYROOM {
@@ -28,6 +29,7 @@ erDiagram
     STUDYROOM_FACILITY {
         int studyroom_id FK
         int facility_id FK
+        datetime created_at
     }
 
     RESERVATION {
@@ -43,7 +45,10 @@ erDiagram
     REVIEW {
         int id PK
         int reservation_id FK
+        inf user_id FK
         int rating
         string comment
         datetime created_at
+        datetime updated_at
     }
+```
