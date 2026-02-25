@@ -9,6 +9,7 @@ from app.routers.user_router import router as user_router
 from app.routers.facility_router import router as facility_router
 from app.routers.studyroom_router import router as studyroom_router
 from app.routers.reservation_router import router as reservation_router
+from app.routers.review_router import router as review_router
 
 # 정의된 모델들을 기반으로 DB에 테이블을 생성한다.
 models.Base.metadata.create_all(bind=engine)
@@ -20,6 +21,7 @@ app.include_router(user_router)
 app.include_router(facility_router)
 app.include_router(studyroom_router)
 app.include_router(reservation_router)
+app.include_router(review_router)
 
 @app.get("/")
 def read_root():

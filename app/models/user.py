@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .reservation import Reservation
+    from .review import Review
 
 
 class User(Base):
@@ -36,4 +37,7 @@ class User(Base):
 
     reservations: Mapped[list["Reservation"]] = relationship(
         "Reservation", back_populates="user"
+    )
+    reviews: Mapped[list["Review"]] = relationship(
+        "Review", back_populates="user"
     )

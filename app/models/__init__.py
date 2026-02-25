@@ -1,11 +1,11 @@
 # models/__init__.py
 from database import Base
 
-from .reservation import Reservation
+from .reservation import Reservation, ReservationStatus
 from .user import User
 from .studyroom import StudyRoom
 from .review import Review
 from .facility import Facility
 from .studyroom_facility import StudyRoomFacility
 
-__all__ = ["Base", "Reservation", "User", "StudyRoom", "Review", "Facility", "StudyRoomFacility"]
+__all__ = ["Base", "Reservation", "ReservationStatus", "User", "StudyRoom", "Review", "Facility", "StudyRoomFacility"]

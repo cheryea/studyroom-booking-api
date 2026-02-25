@@ -1,4 +1,4 @@
-# app/models.py
+# app/models/reservation.py
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Integer, DateTime, ForeignKey, Enum, func

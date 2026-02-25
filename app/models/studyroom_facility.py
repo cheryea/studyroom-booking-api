@@ -1,4 +1,4 @@
-# models/post_tag.py
+# models/studyroom_facility.py
 
 from datetime import datetime
 from sqlalchemy import ForeignKey, func
